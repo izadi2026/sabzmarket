@@ -1,0 +1,1937 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f4f8f5" />
+  <title>سبزمارکت | فروشگاه آنلاین دیجیتال</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #15966a;
+      --green-dark: #08764f;
+      --green-soft: #e9f7f0;
+      --ink: #17231d;
+      --muted: #77827c;
+      --line: #edf1ee;
+      --surface: #ffffff;
+      --page: #f4f8f5;
+      --danger: #e34e58;
+      --shadow: 0 12px 35px rgba(29, 66, 47, 0.07);
+    }
+
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--page);
+      color: var(--ink);
+      font-family: "Vazirmatn", Tahoma, sans-serif;
+    }
+
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid #eaf0ec;
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 13px 16px;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      flex-shrink: 0;
+      color: var(--green-dark);
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(145deg, #20b77e, #08764f);
+      border-radius: 14px;
+      box-shadow: 0 6px 14px rgba(21,150,106,.2);
+    }
+
+    .brand-mark svg { width: 24px; height: 24px; }
+
+    .brand-name {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+
+    .brand-caption {
+      display: block;
+      margin-top: 2px;
+      color: #8a958e;
+      font-size: 10px;
+      font-weight: 500;
+    }
+
+    .search-box {
+      position: relative;
+      display: flex;
+      flex: 1;
+      min-width: 0;
+      height: 44px;
+      margin-right: 4px;
+      background: #f4f7f5;
+      border: 1px solid #edf1ee;
+      border-radius: 13px;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .search-box:focus-within {
+      border-color: rgba(21,150,106,.55);
+      box-shadow: 0 0 0 3px rgba(21,150,106,.09);
+    }
+
+    .search-box svg {
+      width: 19px;
+      height: 19px;
+      margin: auto 12px auto 8px;
+      flex-shrink: 0;
+      color: #87938c;
+    }
+
+    .search-box input {
+      width: 100%;
+      min-width: 0;
+      padding: 0 0 0 12px;
+      border: 0;
+      outline: 0;
+      color: var(--ink);
+      background: transparent;
+      font-size: 12px;
+    }
+
+    .search-box input::placeholder { color: #9aa59e; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .action-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 42px;
+      padding: 0 11px;
+      color: #536159;
+      background: #fff;
+      border: 1px solid #e9efeb;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: .18s ease;
+    }
+
+    .action-link:hover {
+      color: var(--green-dark);
+      border-color: #b9dfcc;
+      background: #fbfefc;
+    }
+
+    .action-link svg { width: 18px; height: 18px; }
+
+    .cart-count {
+      position: absolute;
+      top: -7px;
+      left: -6px;
+      display: grid;
+      min-width: 19px;
+      height: 19px;
+      padding: 0 4px;
+      place-items: center;
+      color: #fff;
+      background: var(--danger);
+      border: 2px solid #fff;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 13px;
+      padding-top: 11px;
+      border-top: 1px solid #f0f3f1;
+    }
+
+    .nav-link {
+      color: #66736b;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: color .18s;
+    }
+
+    .nav-link:hover, .nav-link.active { color: var(--green-dark); }
+
+    .nav-link.category {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--green-dark);
+      font-weight: 800;
+    }
+
+    .nav-link.category svg { width: 16px; height: 16px; }
+
+    .header-promo {
+      margin-right: auto;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .main-content {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 27px 16px 55px;
+    }
+
+    .breadcrumb {
+      margin: 0 0 20px;
+      color: #87938c;
+      font-size: 11px;
+    }
+
+    .section {
+      margin-bottom: 34px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .section-heading h1,
+    .section-heading h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .section-heading p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .category-card {
+      display: flex;
+      min-width: 0;
+      min-height: 136px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 8px;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid #eaf0ec;
+      border-radius: 18px;
+      box-shadow: 0 7px 20px rgba(29,66,47,.035);
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+      border-color: #b8dfca;
+      box-shadow: 0 13px 27px rgba(29,66,47,.08);
+    }
+
+    .category-card.selected {
+      border-color: var(--green);
+      background: #f3fbf6;
+      box-shadow: 0 0 0 3px rgba(21,150,106,.08);
+    }
+
+    .category-icon {
+      display: grid;
+      width: 58px;
+      height: 58px;
+      place-items: center;
+      color: var(--green-dark);
+      background: var(--green-soft);
+      border-radius: 18px;
+    }
+
+    .category-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .category-name {
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .category-hint {
+      color: #91a097;
+      font-size: 10px;
+      font-weight: 500;
+    }
+
+    .show-all-button {
+      min-height: 38px;
+      padding: 0 13px;
+      color: var(--green-dark);
+      background: #f0f8f3;
+      border: 1px solid #d8eee0;
+      border-radius: 11px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: .18s ease;
+    }
+
+    .show-all-button:hover {
+      background: #e5f5eb;
+      border-color: #acd9bf;
+    }
+
+    .category-message {
+      display: none;
+      margin-top: 13px;
+      padding: 12px 14px;
+      color: var(--green-dark);
+      background: #edf8f1;
+      border: 1px solid #d8efe1;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+
+    .category-message.show { display: block; }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 290px));
+      gap: 18px;
+      justify-content: start;
+    }
+
+    .product-card {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      padding: 14px;
+      background: var(--surface);
+      border: 1px solid rgba(225,235,228,.9);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 42px rgba(29,66,47,.11);
+    }
+
+    .image-area {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 220px;
+      overflow: hidden;
+      border-radius: 17px;
+      background: radial-gradient(circle at 50% 45%, #fff 0, #f7faf8 58%, #edf5f0 100%);
+    }
+
+    .product-image {
+      display: block;
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      padding: 14px;
+      mix-blend-mode: multiply;
+    }
+
+    .image-fallback {
+      display: none;
+      min-height: 220px;
+      width: 100%;
+      place-items: center;
+      color: var(--green);
+      font-size: 70px;
+    }
+
+    .discount-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 1;
+      padding: 6px 10px;
+      color: #fff;
+      background: var(--danger);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .product-info { padding: 16px 4px 4px; }
+    .product-name { margin: 0; font-size: 17px; font-weight: 800; line-height: 1.7; }
+    .product-subtitle { margin: 3px 0 12px; color: var(--muted); font-size: 11px; }
+
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 14px;
+      font-size: 12px;
+    }
+
+    .stars { color: #f3ad32; font-size: 15px; letter-spacing: 1px; }
+    .rating-number { color: var(--ink); font-weight: 800; direction: ltr; unicode-bidi: isolate; }
+    .rating-caption { color: var(--muted); font-size: 10px; }
+
+    .price-area {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 13px;
+      border-top: 1px solid var(--line);
+    }
+
+    .old-price {
+      display: block;
+      margin-bottom: 3px;
+      color: #9aa39e;
+      font-size: 11px;
+      text-decoration: line-through;
+    }
+
+    .new-price {
+      color: var(--green-dark);
+      font-size: 19px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .currency { margin-right: 3px; font-size: 11px; font-weight: 600; }
+
+    .add-to-cart {
+      display: inline-flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 42px;
+      padding: 0 11px;
+      border: 0;
+      border-radius: 12px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      box-shadow: 0 6px 14px rgba(21,150,106,.18);
+      font-size: 11px;
+      font-weight: 700;
+      transition: transform .16s, filter .16s;
+    }
+
+    .add-to-cart:hover { filter: brightness(1.05); }
+    .add-to-cart:active { transform: scale(.97); }
+    .add-to-cart svg { width: 16px; height: 16px; }
+
+    .detail-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 36px;
+      margin-top: 10px;
+      color: var(--green-dark);
+      background: #f2faf5;
+      border: 1px solid #dcefe3;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      transition: background .18s, border-color .18s;
+    }
+    .detail-link:hover { background: #e8f6ed; border-color: #b9dfc8; }
+
+    .product-detail-section {
+      margin: 8px 0 38px;
+      scroll-margin-top: 145px;
+    }
+    .product-detail-section[hidden] { display: none !important; }
+    .detail-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 15px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .back-products-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 38px;
+      padding: 0 12px;
+      color: var(--green-dark);
+      background: #fff;
+      border: 1px solid #e0ebe4;
+      border-radius: 11px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .detail-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .detail-gallery, .detail-information, .detail-panel {
+      min-width: 0;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid #e7eee9;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+    .detail-main-image-wrap {
+      display: grid;
+      min-height: 350px;
+      place-items: center;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 45%, #fff 0, #f7faf8 58%, #edf5f0 100%);
+      border-radius: 15px;
+    }
+    .detail-main-image {
+      display: block;
+      width: 100%;
+      height: 350px;
+      padding: 18px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+    .detail-image-fallback { display: none; font-size: 86px; }
+    .detail-thumbnails {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .detail-thumbnail {
+      display: grid;
+      min-width: 0;
+      height: 86px;
+      place-items: center;
+      padding: 5px;
+      overflow: hidden;
+      background: #f7faf8;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .detail-thumbnail.active { border-color: var(--green); background: #eff9f3; }
+    .detail-thumbnail img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+    .detail-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .detail-discount, .detail-stock {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .detail-discount { color: #fff; background: var(--danger); }
+    .detail-stock { color: var(--green-dark); background: #eaf7ef; }
+    .detail-title { margin: 0; font-size: 24px; line-height: 1.7; font-weight: 800; }
+    .detail-subtitle { margin: 5px 0 13px; color: var(--muted); font-size: 12px; }
+    .detail-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; font-size: 12px; }
+    .detail-description { margin: 0 0 17px; color: #59675f; font-size: 13px; line-height: 2.1; }
+    .detail-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 15px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .detail-price { color: var(--green-dark); font-size: 23px; font-weight: 800; white-space: nowrap; }
+    .detail-old-price { display: block; margin-bottom: 3px; color: #9aa39e; font-size: 12px; text-decoration: line-through; }
+    .detail-add-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 47px;
+      padding: 0 16px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      border: 0;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 800;
+      box-shadow: 0 7px 16px rgba(21,150,106,.18);
+    }
+    .detail-note { margin: 12px 0 0; color: #87938c; font-size: 10px; line-height: 1.9; }
+    .detail-extra-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .detail-panel h2 { margin: 0 0 13px; font-size: 16px; font-weight: 800; }
+    .spec-list { display: grid; gap: 0; margin: 0; }
+    .spec-row {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid #f0f3f1;
+      font-size: 11px;
+    }
+    .spec-row:last-child { border-bottom: 0; }
+    .spec-row dt { color: var(--muted); }
+    .spec-row dd { margin: 0; color: var(--ink); font-weight: 700; }
+    .detail-highlights { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .detail-highlights li { display: flex; align-items: flex-start; gap: 8px; color: #536159; font-size: 12px; line-height: 1.9; }
+    .detail-highlights li::before { content: "✓"; display: grid; flex: 0 0 20px; width: 20px; height: 20px; place-items: center; margin-top: 1px; color: var(--green-dark); background: #eaf7ef; border-radius: 50%; font-size: 11px; font-weight: 800; }
+
+    @media (max-width: 760px) {
+      .detail-layout, .detail-extra-grid { grid-template-columns: 1fr; }
+      .detail-main-image-wrap, .detail-main-image { min-height: 270px; height: 270px; }
+      .detail-information, .detail-gallery, .detail-panel { padding: 16px; }
+      .detail-title { font-size: 20px; }
+    }
+    @media (max-width: 420px) {
+      .detail-price-row { align-items: stretch; flex-direction: column; }
+      .detail-add-button { width: 100%; }
+      .detail-topbar { align-items: flex-start; flex-direction: column; }
+      .detail-thumbnail { height: 70px; }
+    }
+
+    .empty-state {
+      display: none;
+      padding: 25px 16px;
+      color: var(--muted);
+      background: #fff;
+      border: 1px dashed #dce8e0;
+      border-radius: 16px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .toast {
+      position: fixed;
+      right: 50%;
+      bottom: 22px;
+      z-index: 30;
+      width: max-content;
+      max-width: calc(100% - 32px);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: #fff;
+      background: #173d2d;
+      border-radius: 13px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.18);
+      font-size: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(50%, 14px);
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(50%, 0); }
+    .toast svg { width: 18px; height: 18px; flex-shrink: 0; color: #75e0ac; }
+
+
+    .hero-banner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 265px;
+      margin: 0 0 32px;
+      padding: 30px 34px;
+      overflow: hidden;
+      isolation: isolate;
+      color: #fff;
+      background: linear-gradient(105deg, #07583d 0%, #0b7952 52%, #15966a 100%);
+      border-radius: 24px;
+      box-shadow: 0 18px 38px rgba(8, 118, 79, .18);
+    }
+
+    .hero-banner::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(255,255,255,.16), transparent 24%),
+        radial-gradient(circle at 75% 110%, rgba(174,255,212,.18), transparent 32%);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      width: min(58%, 560px);
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 12px;
+      padding: 6px 11px;
+      color: #d7ffeb;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(23px, 3.4vw, 34px);
+      line-height: 1.55;
+      font-weight: 800;
+    }
+
+    .hero-description {
+      max-width: 440px;
+      margin: 8px 0 18px;
+      color: rgba(255,255,255,.82);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 44px;
+      padding: 0 17px;
+      color: #07583d;
+      background: #fff;
+      border: 0;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      box-shadow: 0 7px 18px rgba(0,0,0,.12);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(0,0,0,.17);
+    }
+
+    .hero-cta svg { width: 17px; height: 17px; }
+
+    .hero-art {
+      position: absolute;
+      left: 3%;
+      top: 50%;
+      width: min(40%, 390px);
+      height: 88%;
+      object-fit: contain;
+      transform: translateY(-50%) rotate(-8deg);
+      filter: drop-shadow(0 20px 18px rgba(0,0,0,.28));
+      mix-blend-mode: screen;
+      opacity: .96;
+      pointer-events: none;
+    }
+
+    .hero-discount {
+      position: absolute;
+      left: 31%;
+      top: 18%;
+      z-index: 1;
+      display: grid;
+      width: 68px;
+      height: 68px;
+      place-items: center;
+      color: #fff;
+      background: #e34e58;
+      border: 4px solid rgba(255,255,255,.22);
+      border-radius: 50%;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.35;
+      text-align: center;
+      transform: rotate(-9deg);
+      box-shadow: 0 8px 18px rgba(0,0,0,.16);
+    }
+
+    .hero-benefits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 15px;
+      color: rgba(255,255,255,.84);
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .hero-benefits span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .hero-benefits svg { width: 14px; height: 14px; }
+
+
+    @media (max-width: 760px) {
+      .hero-banner {
+        min-height: 250px;
+        padding: 25px 22px;
+        border-radius: 20px;
+      }
+      .hero-copy { width: 65%; }
+      .hero-title { font-size: 23px; }
+      .hero-description { font-size: 11px; }
+      .hero-art { left: -3%; width: 43%; height: 78%; }
+      .hero-discount { left: 27%; top: 13%; width: 58px; height: 58px; font-size: 11px; }
+      .hero-benefits { gap: 8px; font-size: 9px; }
+
+      .header-inner { padding: 11px 13px; }
+      .header-top { flex-wrap: wrap; gap: 10px; }
+      .brand { margin-left: auto; }
+      .search-box { order: 3; flex: 1 0 100%; margin: 0; }
+      .header-actions { gap: 6px; }
+      .action-link { min-height: 40px; padding: 0 9px; }
+      .action-link .action-text { display: none; }
+      .main-nav {
+        gap: 18px;
+        overflow-x: auto;
+        margin-top: 10px;
+        padding: 10px 1px 2px;
+        scrollbar-width: none;
+      }
+      .main-nav::-webkit-scrollbar { display: none; }
+      .header-promo { display: none; }
+      .main-content { padding-top: 22px; }
+      .category-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+      .category-card { min-height: 125px; }
+    }
+
+    @media (max-width: 420px) {
+      .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .category-card { min-height: 118px; }
+      .section-heading h1, .section-heading h2 { font-size: 18px; }
+    }
+
+    @media (max-width: 360px) {
+      .brand-name { font-size: 16px; }
+      .brand-mark { width: 38px; height: 38px; }
+      .price-area { align-items: stretch; flex-direction: column; }
+      .add-to-cart { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+
+    .cart-section {
+      margin-top: 38px;
+      scroll-margin-top: 150px;
+    }
+
+    .cart-panel {
+      padding: 22px;
+      background: #fff;
+      border: 1px solid #e7eee9;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .cart-empty {
+      padding: 22px 14px;
+      color: var(--muted);
+      background: #f8fbf9;
+      border: 1px dashed #dce8e0;
+      border-radius: 14px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .cart-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cart-item:last-child { border-bottom: 0; }
+
+    .cart-item-name {
+      margin: 0 0 4px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .cart-item-price {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .quantity-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 5px;
+      background: #f4f8f5;
+      border: 1px solid #e8efe9;
+      border-radius: 11px;
+    }
+
+    .quantity-button {
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      color: var(--green-dark);
+      background: #fff;
+      border: 1px solid #e1ebe4;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .quantity-value {
+      min-width: 18px;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .cart-line-total {
+      min-width: 112px;
+      color: var(--green-dark);
+      font-size: 12px;
+      font-weight: 800;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .cart-remove {
+      margin-top: 5px;
+      padding: 0;
+      color: #d34b55;
+      background: transparent;
+      border: 0;
+      font-family: inherit;
+      font-size: 10px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .cart-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 15px;
+      padding-top: 17px;
+      border-top: 1px solid var(--line);
+    }
+
+    .cart-summary-label {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .cart-total {
+      color: var(--green-dark);
+      font-size: 21px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .cart-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .clear-cart-button {
+      min-height: 39px;
+      padding: 0 13px;
+      color: #c34b54;
+      background: #fff7f7;
+      border: 1px solid #f4dfe1;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .checkout-note {
+      color: #8a958e;
+      font-size: 10px;
+      line-height: 1.8;
+      text-align: left;
+    }
+
+    @media (max-width: 560px) {
+      .cart-panel { padding: 15px; }
+      .cart-item {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+      }
+      .cart-line-total {
+        grid-column: 1;
+        grid-row: 2;
+        text-align: right;
+      }
+      .quantity-controls {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+      }
+      .cart-summary { align-items: flex-start; flex-direction: column; }
+      .cart-total { font-size: 19px; }
+      .cart-actions { align-items: flex-start; flex-direction: column; }
+      .checkout-note { text-align: right; }
+    }
+
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-top">
+        <a class="brand" href="#" aria-label="صفحه اصلی سبزمارکت">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5z"/>
+              <path d="m4.5 7.8 7.5 4.3 7.5-4.3M12 12.1V21"/>
+              <path d="m8.5 5 8 4.6"/>
+            </svg>
+          </span>
+          <span>
+            <span class="brand-name">سبزمارکت</span>
+            <span class="brand-caption">دنیای موبایل و دیجیتال</span>
+          </span>
+        </a>
+
+        <form class="search-box" id="searchForm" role="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>
+          </svg>
+          <input id="searchInput" type="search" placeholder="جست‌وجوی محصول، برند یا دسته‌بندی..." aria-label="جست‌وجوی محصولات">
+        </form>
+
+        <div class="header-actions">
+          <a class="action-link" href="#account" id="accountLink" aria-label="ورود به حساب کاربری">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="8" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/>
+            </svg>
+            <span class="action-text">ورود | ثبت‌نام</span>
+          </a>
+          <a class="action-link" href="#cart" id="cartLink" aria-label="سبد خرید">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 3h2l2.2 11.1a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 7H6"/>
+              <circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/>
+            </svg>
+            <span class="action-text">سبد خرید</span>
+            <span class="cart-count" id="cartCount">۰</span>
+          </a>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="منوی اصلی">
+        <a class="nav-link category active" href="#categories">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+          دسته‌بندی کالاها
+        </a>
+        <a class="nav-link" href="#products">همه محصولات</a>
+        <a class="nav-link" href="#products">پیشنهادهای ویژه</a>
+        <a class="nav-link" href="#products">پرفروش‌ترین‌ها</a>
+        <span class="header-promo">ارسال سریع و خرید آسان</span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <p class="breadcrumb">خانه　›　فروشگاه　›　کالای دیجیتال</p>
+
+    <section class="hero-banner" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <span class="hero-kicker">✨ پیشنهاد ویژه سبزمارکت</span>
+        <h1 class="hero-title" id="heroTitle">صدای متفاوت،<br>انتخاب هوشمندانه</h1>
+        <p class="hero-description">با هدفون بی‌سیم X200 از موسیقی لذت ببر. همین امروز با قیمت ویژه خرید کن.</p>
+        <a class="hero-cta" href="#products">
+          مشاهده محصول
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5m7 7-7-7 7-7"/>
+          </svg>
+        </a>
+        <div class="hero-benefits">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7.5"/></svg>
+            خرید آسان
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7.5" cy="19" r="1.5"/><circle cx="17.5" cy="19" r="1.5"/></svg>
+            ارسال سریع
+          </span>
+        </div>
+      </div>
+      <span class="hero-discount">۱۹٪<br>تخفیف</span>
+      <img
+        class="hero-art"
+        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=85"
+        alt="هدفون بی‌سیم با طراحی مدرن"
+        onerror="this.style.display='none';"
+      >
+    </section>
+
+
+    <section class="section" id="categories" aria-labelledby="categoriesTitle">
+      <div class="section-heading">
+        <div>
+          <h1 id="categoriesTitle">خرید بر اساس دسته‌بندی</h1>
+          <p>دسته موردنظرت را انتخاب کن و محصولاتش را ببین</p>
+        </div>
+        <button class="show-all-button" id="showAllProducts" type="button">نمایش همه محصولات</button>
+      </div>
+
+      <div class="category-grid" role="group" aria-label="دسته‌بندی محصولات">
+        <button class="category-card" type="button" data-category="mobile" aria-pressed="false">
+          <span class="category-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.2"/><path d="M10 5h4M11 18.5h2"/></svg>
+          </span>
+          <span class="category-name">موبایل</span>
+          <span class="category-hint">گوشی‌های هوشمند</span>
+        </button>
+
+        <button class="category-card" type="button" data-category="laptop" aria-pressed="false">
+          <span class="category-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="13" rx="1.5"/><path d="M2 20h20l-2-4H4z"/></svg>
+          </span>
+          <span class="category-name">لپ‌تاپ</span>
+          <span class="category-hint">کار و سرگرمی</span>
+        </button>
+
+        <button class="category-card" type="button" data-category="headphone" aria-pressed="false">
+          <span class="category-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 13v-2a9 9 0 0 1 18 0v2"/><rect x="3" y="12" width="5" height="8" rx="2"/><rect x="16" y="12" width="5" height="8" rx="2"/></svg>
+          </span>
+          <span class="category-name">هدفون</span>
+          <span class="category-hint">صدای باکیفیت</span>
+        </button>
+
+        <button class="category-card" type="button" data-category="watch" aria-pressed="false">
+          <span class="category-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="3"/><path d="m9 2 1 4m5-4-1 4m-5 12-1 4m5-4 1 4M12 9v3l2 1"/></svg>
+          </span>
+          <span class="category-name">ساعت هوشمند</span>
+          <span class="category-hint">همراه همیشه‌گی</span>
+        </button>
+
+        <button class="category-card" type="button" data-category="accessory" aria-pressed="false">
+          <span class="category-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M8 7V4a2 2 0 0 1 4 0v3m-2-1v8a4 4 0 0 0 8 0v-2"/><path d="M16 10h4v4h-4zM6 7h4v4H6z"/></svg>
+          </span>
+          <span class="category-name">لوازم جانبی</span>
+          <span class="category-hint">کابل و شارژر</span>
+        </button>
+      </div>
+
+      <div class="category-message show" id="categoryMessage" role="status" aria-live="polite">
+        همه محصولات نمایش داده می‌شوند؛ برای دیدن کالاهای یک گروه، دسته‌بندی موردنظرت را انتخاب کن.
+      </div>
+    </section>
+
+    <section class="section" id="products" aria-labelledby="productsTitle">
+      <div class="section-heading">
+        <div>
+          <h2 id="productsTitle">پیشنهادهای ویژه و محصولات پرفروش</h2>
+          <p>محصولات منتخب سبزمارکت با قیمت‌های نمونه و تخفیف ویژه</p>
+        </div>
+      </div>
+
+      <div class="product-grid" id="productGrid">
+        <article class="product-card" data-category="headphone" data-search="هدفون بی سیم x200 هدفون هندزفری دیجیتال">
+          <div class="image-area">
+            <span class="discount-badge">۱۹٪ تخفیف</span>
+            <img
+              class="product-image"
+              src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=85"
+              alt="تصویر نمونه هدفون بی‌سیم"
+              onerror="this.style.display='none'; document.querySelector('.image-fallback').style.display='grid';"
+            >
+            <div class="image-fallback" aria-hidden="true">🎧</div>
+          </div>
+
+          <div class="product-info">
+            <h3 class="product-name">هدفون بی‌سیم X200</h3>
+            <p class="product-subtitle">کیفیت صدای شفاف · طراحی راحت و مدرن</p>
+
+            <div class="rating-row" aria-label="امتیاز ۴٫۷ از ۵">
+              <span class="stars" aria-hidden="true">★★★★★</span>
+              <span class="rating-number">۴٫۷</span>
+              <span class="rating-caption">از ۵ (امتیاز کاربران)</span>
+            </div>
+
+            <div class="price-area">
+              <div>
+                <span class="old-price">۲٬۴۵۰٬۰۰۰ تومان</span>
+                <div class="new-price">۱٬۹۹۰٬۰۰۰ <span class="currency">تومان</span></div>
+              </div>
+              <button class="add-to-cart" type="button" data-product="هدفون بی‌سیم X200" data-product-id="x200" data-price="1990000">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 3h2l2.2 11.1a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 7H6"/>
+                  <circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/>
+                </svg>
+                افزودن به سبد خرید
+              </button>
+            </div>
+            <button class="detail-link" type="button" data-open-product="x200">مشاهده جزئیات و مشخصات</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="mobile" data-search="گوشی موبایل nova 12 نوا تلفن هوشمند">
+          <div class="image-area">
+            <span class="discount-badge">۱۲٪ تخفیف</span>
+            <img class="product-image"
+              src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=85"
+              alt="گوشی هوشمند"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <div class="image-fallback" aria-hidden="true">📱</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">گوشی هوشمند Nova 12</h3>
+            <p class="product-subtitle">نمایشگر باکیفیت · حافظه بالا</p>
+            <div class="rating-row" aria-label="امتیاز ۴٫۸ از ۵">
+              <span class="stars" aria-hidden="true">★★★★★</span>
+              <span class="rating-number">۴٫۸</span>
+              <span class="rating-caption">از ۵ (امتیاز کاربران)</span>
+            </div>
+            <div class="price-area">
+              <div>
+                <span class="old-price">۲۱٬۵۰۰٬۰۰۰ تومان</span>
+                <div class="new-price">۱۸٬۹۰۰٬۰۰۰ <span class="currency">تومان</span></div>
+              </div>
+              <button class="add-to-cart" type="button" data-product="گوشی هوشمند Nova 12" data-product-id="nova12" data-price="18900000">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 3h2l2.2 11.1a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 7H6"/>
+                  <circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/>
+                </svg>
+                افزودن به سبد خرید
+              </button>
+            </div>
+            <button class="detail-link" type="button" data-open-product="nova12">مشاهده جزئیات و مشخصات</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="laptop" data-search="لپ تاپ laptop airbook 14 کامپیوتر">
+          <div class="image-area">
+            <span class="discount-badge">۱۳٪ تخفیف</span>
+            <img class="product-image"
+              src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=85"
+              alt="لپ‌تاپ نقره‌ای"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <div class="image-fallback" aria-hidden="true">💻</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">لپ‌تاپ AirBook 14</h3>
+            <p class="product-subtitle">سبک و سریع · مناسب کار و تحصیل</p>
+            <div class="rating-row" aria-label="امتیاز ۴٫۶ از ۵">
+              <span class="stars" aria-hidden="true">★★★★★</span>
+              <span class="rating-number">۴٫۶</span>
+              <span class="rating-caption">از ۵ (امتیاز کاربران)</span>
+            </div>
+            <div class="price-area">
+              <div>
+                <span class="old-price">۳۹٬۹۰۰٬۰۰۰ تومان</span>
+                <div class="new-price">۳۴٬۹۰۰٬۰۰۰ <span class="currency">تومان</span></div>
+              </div>
+              <button class="add-to-cart" type="button" data-product="لپ‌تاپ AirBook 14" data-product-id="airbook14" data-price="34900000">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 3h2l2.2 11.1a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 7H6"/>
+                  <circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/>
+                </svg>
+                افزودن به سبد خرید
+              </button>
+            </div>
+            <button class="detail-link" type="button" data-open-product="airbook14">مشاهده جزئیات و مشخصات</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="watch" data-search="ساعت هوشمند smart watch fit s3 ساعت">
+          <div class="image-area">
+            <span class="discount-badge">۱۷٪ تخفیف</span>
+            <img class="product-image"
+              src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85"
+              alt="ساعت مچی هوشمند"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <div class="image-fallback" aria-hidden="true">⌚</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">ساعت هوشمند Fit S3</h3>
+            <p class="product-subtitle">طراحی زیبا · نمایش اعلان‌ها</p>
+            <div class="rating-row" aria-label="امتیاز ۴٫۵ از ۵">
+              <span class="stars" aria-hidden="true">★★★★★</span>
+              <span class="rating-number">۴٫۵</span>
+              <span class="rating-caption">از ۵ (امتیاز کاربران)</span>
+            </div>
+            <div class="price-area">
+              <div>
+                <span class="old-price">۴٬۲۰۰٬۰۰۰ تومان</span>
+                <div class="new-price">۳٬۴۹۰٬۰۰۰ <span class="currency">تومان</span></div>
+              </div>
+              <button class="add-to-cart" type="button" data-product="ساعت هوشمند Fit S3" data-product-id="fits3" data-price="3490000">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 3h2l2.2 11.1a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 7H6"/>
+                  <circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/>
+                </svg>
+                افزودن به سبد خرید
+              </button>
+            </div>
+            <button class="detail-link" type="button" data-open-product="fits3">مشاهده جزئیات و مشخصات</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="accessory" data-search="شارژر سریع fast charger 30w لوازم جانبی آداپتور">
+          <div class="image-area">
+            <span class="discount-badge">۱۸٪ تخفیف</span>
+            <img class="product-image"
+              src="https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&w=900&q=85"
+              alt="شارژر و لوازم جانبی دیجیتال"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <div class="image-fallback" aria-hidden="true">🔌</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">شارژر سریع ۳۰ وات</h3>
+            <p class="product-subtitle">شارژ سریع و ایمن · طراحی جمع‌وجور</p>
+            <div class="rating-row" aria-label="امتیاز ۴٫۷ از ۵">
+              <span class="stars" aria-hidden="true">★★★★★</span>
+              <span class="rating-number">۴٫۷</span>
+              <span class="rating-caption">از ۵ (امتیاز کاربران)</span>
+            </div>
+            <div class="price-area">
+              <div>
+                <span class="old-price">۱٬۰۹۰٬۰۰۰ تومان</span>
+                <div class="new-price">۸۹۰٬۰۰۰ <span class="currency">تومان</span></div>
+              </div>
+              <button class="add-to-cart" type="button" data-product="شارژر سریع ۳۰ وات" data-product-id="charger30" data-price="890000">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 3h2l2.2 11.1a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 7H6"/>
+                  <circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/>
+                </svg>
+                افزودن به سبد خرید
+              </button>
+            </div>
+            <button class="detail-link" type="button" data-open-product="charger30">مشاهده جزئیات و مشخصات</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="empty-state" id="emptyState">هنوز محصولی در این دسته قرار نداده‌ایم. در مرحله‌های بعد محصولات بیشتری اضافه می‌کنیم.</div>
+    </section>
+
+    <section class="product-detail-section" id="productDetail" hidden aria-labelledby="detailName">
+      <div class="detail-topbar">
+        <span>خانه　›　فروشگاه　›　جزئیات محصول</span>
+        <button class="back-products-button" id="backToProducts" type="button">→ بازگشت به محصولات</button>
+      </div>
+
+      <div class="detail-layout">
+        <div class="detail-gallery">
+          <div class="detail-main-image-wrap">
+            <img class="detail-main-image" id="detailMainImage" src="" alt="تصویر محصول">
+            <div class="detail-image-fallback" id="detailImageFallback" aria-hidden="true">📦</div>
+          </div>
+          <div class="detail-thumbnails" id="detailThumbnails" aria-label="تصاویر بیشتر محصول"></div>
+        </div>
+
+        <div class="detail-information">
+          <div class="detail-badges">
+            <span class="detail-discount" id="detailDiscount">تخفیف ویژه</span>
+            <span class="detail-stock">✓ موجود در فروشگاه</span>
+          </div>
+          <h1 class="detail-title" id="detailName">نام محصول</h1>
+          <p class="detail-subtitle" id="detailSubtitle"></p>
+          <div class="detail-rating">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <strong class="rating-number" id="detailRating">۴٫۷</strong>
+            <span class="rating-caption">از ۵ (امتیاز نمونه کاربران)</span>
+          </div>
+          <p class="detail-description" id="detailDescription"></p>
+          <div class="detail-price-row">
+            <div>
+              <span class="detail-old-price" id="detailOldPrice"></span>
+              <strong class="detail-price" id="detailPrice"></strong>
+            </div>
+            <button class="detail-add-button" id="detailAddToCart" type="button">افزودن به سبد خرید</button>
+          </div>
+          <p class="detail-note">توجه: این فروشگاه یک نمونه آموزشی است؛ قیمت‌ها، تصاویر و مشخصات فنی نمایشی هستند و باید پیش از فروش واقعی با اطلاعات دقیق کالا جایگزین شوند.</p>
+        </div>
+      </div>
+
+      <div class="detail-extra-grid">
+        <section class="detail-panel" aria-labelledby="specsTitle">
+          <h2 id="specsTitle">مشخصات فنی محصول</h2>
+          <dl class="spec-list" id="detailSpecs"></dl>
+        </section>
+        <section class="detail-panel" aria-labelledby="highlightsTitle">
+          <h2 id="highlightsTitle">ویژگی‌های مهم</h2>
+          <ul class="detail-highlights" id="detailHighlights"></ul>
+        </section>
+      </div>
+    </section>
+
+    <section class="section cart-section" id="cart" aria-labelledby="cartTitle">
+      <div class="section-heading">
+        <div>
+          <h2 id="cartTitle">سبد خرید شما</h2>
+          <p>تعداد و قیمت محصولات انتخاب‌شده را مدیریت کن</p>
+        </div>
+      </div>
+
+      <div class="cart-panel">
+        <div class="cart-empty" id="cartEmpty">سبد خریدت هنوز خالی است. از بین محصولات بالا، کالای موردنظرت را اضافه کن.</div>
+        <div class="cart-list" id="cartList" aria-live="polite"></div>
+
+        <div class="cart-summary">
+          <span class="cart-summary-label">مبلغ کل سبد خرید</span>
+          <strong class="cart-total" id="cartTotal">۰ تومان</strong>
+        </div>
+
+        <div class="cart-actions">
+          <button class="clear-cart-button" id="clearCartButton" type="button">خالی کردن سبد خرید</button>
+          <span class="checkout-note">هزینه ارسال در مرحله نهایی سفارش محاسبه می‌شود.</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="m5 12 4 4L19 6"/>
+    </svg>
+    <span id="toastMessage">محصول به سبد خرید اضافه شد!</span>
+  </div>
+
+  <script>
+    const cartCount = document.getElementById("cartCount");
+    const toast = document.getElementById("toast");
+    const toastMessage = document.getElementById("toastMessage");
+    const searchInput = document.getElementById("searchInput");
+    const productCards = document.querySelectorAll(".product-card");
+    const emptyState = document.getElementById("emptyState");
+    const categoryMessage = document.getElementById("categoryMessage");
+    const categoryButtons = document.querySelectorAll(".category-card");
+    const addToCartButtons = document.querySelectorAll(".add-to-cart");
+    const cartList = document.getElementById("cartList");
+    const cartEmpty = document.getElementById("cartEmpty");
+    const cartTotal = document.getElementById("cartTotal");
+    const clearCartButton = document.getElementById("clearCartButton");
+
+    let cart = {};
+    let toastTimer;
+    let activeCategory = "all";
+
+    const detailProducts = {
+      x200: {
+        name: "هدفون بی‌سیم X200", subtitle: "کیفیت صدای شفاف · طراحی راحت و مدرن", price: 1990000, oldPrice: 2450000, discount: "۱۹٪ تخفیف", rating: "۴٫۷", emoji: "🎧",
+        description: "هدفون بی‌سیم X200 یک انتخاب نمونه برای گوش دادن به موسیقی، تماشای فیلم و مکالمه روزمره است. طراحی روگوشی و ظاهر ساده آن برای استفاده در خانه، محل کار و مسیر رفت‌وآمد در نظر گرفته شده است.",
+        images: [
+          "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=1000&q=85"
+        ],
+        specs: [["نوع اتصال", "بی‌سیم و بلوتوث"], ["طراحی", "روگوشی"], ["کاربری", "موسیقی، فیلم و مکالمه"], ["درگاه شارژ", "USB-C (نمونه)"], ["رنگ", "مشکی"]],
+        highlights: ["طراحی راحت برای استفاده روزمره", "مناسب گوش دادن به موسیقی و پادکست", "بدون نیاز به اتصال سیمی هنگام استفاده"]
+      },
+      nova12: {
+        name: "گوشی هوشمند Nova 12", subtitle: "نمایشگر باکیفیت · حافظه بالا", price: 18900000, oldPrice: 21500000, discount: "۱۲٪ تخفیف", rating: "۴٫۸", emoji: "📱",
+        description: "گوشی هوشمند Nova 12 در این فروشگاه نمونه، برای کارهای روزمره، ارتباط با دوستان، عکاسی و استفاده از برنامه‌ها معرفی شده است. طراحی باریک و نمایشگر بزرگ، تجربه‌ای راحت برای استفاده روزانه فراهم می‌کند.",
+        images: [
+          "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=1000&q=85"
+        ],
+        specs: [["نوع محصول", "گوشی هوشمند"], ["نمایشگر", "لمسی رنگی (نمونه)"], ["حافظه", "۱۲۸ گیگابایت (نمونه)"], ["دوربین", "چندگانه (نمونه)"], ["رنگ", "خاکستری"]],
+        highlights: ["مناسب استفاده روزمره و شبکه‌های اجتماعی", "نمایشگر بزرگ برای تماشای محتوا", "طراحی مدرن و خوش‌دست"]
+      },
+      airbook14: {
+        name: "لپ‌تاپ AirBook 14", subtitle: "سبک و سریع · مناسب کار و تحصیل", price: 34900000, oldPrice: 39900000, discount: "۱۳٪ تخفیف", rating: "۴٫۶", emoji: "💻",
+        description: "لپ‌تاپ AirBook 14 یک مدل فرضی و سبک برای کارهای اداری، مطالعه، کلاس‌های آنلاین و وب‌گردی است. اندازه ۱۴ اینچی آن تعادلی میان فضای کاری و قابلیت حمل ایجاد می‌کند.",
+        images: [
+          "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1000&q=85"
+        ],
+        specs: [["اندازه نمایشگر", "۱۴ اینچ (نمونه)"], ["حافظه رم", "۱۶ گیگابایت (نمونه)"], ["حافظه داخلی", "۵۱۲ گیگابایت SSD (نمونه)"], ["کاربری", "اداری، تحصیلی و روزمره"], ["رنگ", "نقره‌ای"]],
+        highlights: ["بدنه سبک برای جابه‌جایی آسان", "مناسب کارهای اداری و تحصیلی", "فضای ذخیره‌سازی SSD در مشخصات نمونه"]
+      },
+      fits3: {
+        name: "ساعت هوشمند Fit S3", subtitle: "طراحی زیبا · نمایش اعلان‌ها", price: 3490000, oldPrice: 4200000, discount: "۱۷٪ تخفیف", rating: "۴٫۵", emoji: "⌚",
+        description: "ساعت هوشمند Fit S3 برای نمایش اعلان‌ها و همراهی در فعالیت‌های روزانه طراحی شده است. ظاهر اسپرت و صفحه نمایش رنگی آن، این مدل نمونه را به گزینه‌ای مناسب برای استفاده روزمره تبدیل می‌کند.",
+        images: [
+          "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1000&q=85"
+        ],
+        specs: [["نوع نمایشگر", "رنگی (نمونه)"], ["اتصال", "بلوتوث"], ["امکانات", "نمایش اعلان‌ها و پایش فعالیت"], ["سازگاری", "اندروید و iOS (نمونه)"], ["رنگ", "مشکی"]],
+        highlights: ["نمایش اعلان‌های گوشی روی مچ دست", "طراحی مناسب استفاده روزمره", "مناسب پایش فعالیت‌های عمومی"]
+      },
+      charger30: {
+        name: "شارژر سریع ۳۰ وات", subtitle: "شارژ سریع و ایمن · طراحی جمع‌وجور", price: 890000, oldPrice: 1090000, discount: "۱۸٪ تخفیف", rating: "۴٫۷", emoji: "🔌",
+        description: "شارژر سریع ۳۰ وات یک آداپتور نمونه و جمع‌وجور برای شارژ دستگاه‌های سازگار است. برای استفاده ایمن، توان و نوع درگاه شارژر را با نیاز دستگاه خود بررسی کنید.",
+        images: [
+          "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1591290619762-c588e7a6f1d5?auto=format&fit=crop&w=1000&q=85"
+        ],
+        specs: [["توان خروجی", "۳۰ وات"], ["نوع درگاه", "USB-C (نمونه)"], ["قابلیت", "شارژ سریع دستگاه سازگار"], ["طراحی", "جمع‌وجور"], ["رنگ", "سفید"]],
+        highlights: ["ابعاد جمع‌وجور و قابل حمل", "مناسب دستگاه‌های سازگار با شارژ ۳۰ وات", "پیش از خرید، سازگاری دستگاه را بررسی کنید"]
+      }
+    };
+
+    const productDetailSection = document.getElementById("productDetail");
+    const detailHomeSections = [
+      document.querySelector(".hero-banner"),
+      document.getElementById("categories"),
+      document.getElementById("products"),
+      document.getElementById("cart")
+    ];
+    const originalBreadcrumb = document.querySelector(".breadcrumb").textContent;
+    let activeDetailProductId = null;
+
+    function openProductDetail(id) {
+      const product = detailProducts[id];
+      if (!product) return;
+      activeDetailProductId = id;
+
+      document.getElementById("detailName").textContent = product.name;
+      document.getElementById("detailSubtitle").textContent = product.subtitle;
+      document.getElementById("detailDiscount").textContent = product.discount;
+      document.getElementById("detailRating").textContent = product.rating;
+      document.getElementById("detailDescription").textContent = product.description;
+      document.getElementById("detailOldPrice").textContent = formatPrice(product.oldPrice);
+      document.getElementById("detailPrice").textContent = formatPrice(product.price);
+
+      const mainImage = document.getElementById("detailMainImage");
+      const fallback = document.getElementById("detailImageFallback");
+      mainImage.style.display = "block";
+      fallback.style.display = "none";
+      mainImage.src = product.images[0];
+      mainImage.alt = "تصویر " + product.name;
+      mainImage.onerror = () => {
+        mainImage.style.display = "none";
+        fallback.style.display = "grid";
+        fallback.textContent = product.emoji;
+      };
+
+      const thumbnails = document.getElementById("detailThumbnails");
+      thumbnails.replaceChildren();
+      product.images.forEach((imageUrl, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "detail-thumbnail" + (index === 0 ? " active" : "");
+        button.setAttribute("aria-label", "نمایش تصویر " + (index + 1) + " محصول");
+        const image = document.createElement("img");
+        image.src = imageUrl;
+        image.alt = "نمای " + (index + 1) + " از " + product.name;
+        image.onerror = () => { button.textContent = product.emoji; };
+        button.append(image);
+        button.addEventListener("click", () => {
+          mainImage.style.display = "block";
+          fallback.style.display = "none";
+          mainImage.src = imageUrl;
+          mainImage.onerror = () => {
+            mainImage.style.display = "none";
+            fallback.style.display = "grid";
+            fallback.textContent = product.emoji;
+          };
+          thumbnails.querySelectorAll(".detail-thumbnail").forEach((item) => item.classList.remove("active"));
+          button.classList.add("active");
+        });
+        thumbnails.append(button);
+      });
+
+      const specs = document.getElementById("detailSpecs");
+      specs.replaceChildren();
+      product.specs.forEach(([label, value]) => {
+        const row = document.createElement("div");
+        row.className = "spec-row";
+        const term = document.createElement("dt");
+        term.textContent = label;
+        const description = document.createElement("dd");
+        description.textContent = value;
+        row.append(term, description);
+        specs.append(row);
+      });
+
+      const highlights = document.getElementById("detailHighlights");
+      highlights.replaceChildren();
+      product.highlights.forEach((highlight) => {
+        const item = document.createElement("li");
+        item.textContent = highlight;
+        highlights.append(item);
+      });
+
+      detailHomeSections.forEach((section) => { section.hidden = true; });
+      productDetailSection.hidden = false;
+      document.querySelector(".breadcrumb").textContent = "خانه　›　فروشگاه　›　" + product.name;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function closeProductDetail() {
+      productDetailSection.hidden = true;
+      detailHomeSections.forEach((section) => { section.hidden = false; });
+      document.querySelector(".breadcrumb").textContent = originalBreadcrumb;
+      activeDetailProductId = null;
+      document.getElementById("products").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    const categoryNames = {
+      mobile: "موبایل",
+      laptop: "لپ‌تاپ",
+      headphone: "هدفون",
+      watch: "ساعت هوشمند",
+      accessory: "لوازم جانبی"
+    };
+
+    const productCatalog = {};
+    addToCartButtons.forEach((button) => {
+      productCatalog[button.dataset.productId] = {
+        id: button.dataset.productId,
+        name: button.dataset.product,
+        price: Number(button.dataset.price)
+      };
+    });
+
+    document.querySelectorAll("[data-open-product]").forEach((button) => {
+      button.addEventListener("click", () => openProductDetail(button.dataset.openProduct));
+    });
+
+    document.getElementById("backToProducts").addEventListener("click", closeProductDetail);
+
+    document.getElementById("detailAddToCart").addEventListener("click", () => {
+      if (!activeDetailProductId) return;
+      const product = productCatalog[activeDetailProductId];
+      if (!product) return;
+      cart[activeDetailProductId] = (cart[activeDetailProductId] || 0) + 1;
+      renderCart();
+      showToast(product.name + " به سبد خرید اضافه شد!");
+    });
+
+
+    function formatPrice(value) {
+      return Number(value).toLocaleString("fa-IR") + " تومان";
+    }
+
+    function showToast(message) {
+      toastMessage.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
+    }
+
+    function saveCart() {
+      try {
+        localStorage.setItem("sabzMarketCart", JSON.stringify(cart));
+      } catch (error) {
+        // سبد خرید همچنان تا زمان باز بودن همین صفحه کار می‌کند.
+      }
+    }
+
+    function loadCart() {
+      try {
+        const savedCart = JSON.parse(localStorage.getItem("sabzMarketCart") || "{}");
+        if (!savedCart || typeof savedCart !== "object" || Array.isArray(savedCart)) return;
+
+        Object.keys(savedCart).forEach((id) => {
+          const quantity = Number(savedCart[id]);
+          if (productCatalog[id] && Number.isInteger(quantity) && quantity > 0) {
+            cart[id] = quantity;
+          }
+        });
+      } catch (error) {
+        cart = {};
+      }
+    }
+
+    function getCartQuantity() {
+      return Object.values(cart).reduce((sum, quantity) => sum + quantity, 0);
+    }
+
+    function getCartTotal() {
+      return Object.entries(cart).reduce((sum, [id, quantity]) => {
+        return sum + (productCatalog[id].price * quantity);
+      }, 0);
+    }
+
+    function renderCart() {
+      cartList.replaceChildren();
+      const entries = Object.entries(cart).filter(([id, quantity]) => productCatalog[id] && quantity > 0);
+      const hasItems = entries.length > 0;
+
+      cartEmpty.style.display = hasItems ? "none" : "block";
+      cartCount.textContent = getCartQuantity().toLocaleString("fa-IR");
+      cartTotal.textContent = formatPrice(getCartTotal());
+
+      entries.forEach(([id, quantity]) => {
+        const product = productCatalog[id];
+
+        const item = document.createElement("div");
+        item.className = "cart-item";
+
+        const details = document.createElement("div");
+        const name = document.createElement("h3");
+        name.className = "cart-item-name";
+        name.textContent = product.name;
+
+        const unitPrice = document.createElement("div");
+        unitPrice.className = "cart-item-price";
+        unitPrice.textContent = "قیمت هر عدد: " + formatPrice(product.price);
+
+        const removeButton = document.createElement("button");
+        removeButton.className = "cart-remove";
+        removeButton.type = "button";
+        removeButton.dataset.action = "remove";
+        removeButton.dataset.id = id;
+        removeButton.textContent = "حذف محصول";
+
+        details.append(name, unitPrice, removeButton);
+
+        const quantityControls = document.createElement("div");
+        quantityControls.className = "quantity-controls";
+
+        const decreaseButton = document.createElement("button");
+        decreaseButton.className = "quantity-button";
+        decreaseButton.type = "button";
+        decreaseButton.dataset.action = "decrease";
+        decreaseButton.dataset.id = id;
+        decreaseButton.setAttribute("aria-label", "کم کردن تعداد " + product.name);
+        decreaseButton.textContent = "−";
+
+        const quantityValue = document.createElement("span");
+        quantityValue.className = "quantity-value";
+        quantityValue.textContent = quantity.toLocaleString("fa-IR");
+
+        const increaseButton = document.createElement("button");
+        increaseButton.className = "quantity-button";
+        increaseButton.type = "button";
+        increaseButton.dataset.action = "increase";
+        increaseButton.dataset.id = id;
+        increaseButton.setAttribute("aria-label", "زیاد کردن تعداد " + product.name);
+        increaseButton.textContent = "+";
+
+        quantityControls.append(decreaseButton, quantityValue, increaseButton);
+
+        const lineTotal = document.createElement("strong");
+        lineTotal.className = "cart-line-total";
+        lineTotal.textContent = formatPrice(product.price * quantity);
+
+        item.append(details, quantityControls, lineTotal);
+        cartList.append(item);
+      });
+
+      clearCartButton.disabled = !hasItems;
+      clearCartButton.style.opacity = hasItems ? "1" : ".5";
+      saveCart();
+    }
+
+    function updateProducts() {
+      const query = searchInput.value.trim().toLocaleLowerCase("fa");
+      let visibleCount = 0;
+
+      productCards.forEach((card) => {
+        const searchableText = card.dataset.search.toLocaleLowerCase("fa");
+        const categoryMatches = activeCategory === "all" || card.dataset.category === activeCategory;
+        const searchMatches = searchableText.includes(query);
+        const shouldShow = categoryMatches && searchMatches;
+
+        card.style.display = shouldShow ? "" : "none";
+        if (shouldShow) visibleCount += 1;
+      });
+
+      emptyState.style.display = visibleCount ? "none" : "block";
+    }
+
+    document.getElementById("showAllProducts").addEventListener("click", () => {
+      activeCategory = "all";
+      categoryButtons.forEach((button) => {
+        button.classList.remove("selected");
+        button.setAttribute("aria-pressed", "false");
+      });
+      categoryMessage.textContent = "همه محصولات نمایش داده می‌شوند؛ برای دیدن کالاهای یک گروه، دسته‌بندی موردنظرت را انتخاب کن.";
+      categoryMessage.classList.add("show");
+      updateProducts();
+    });
+
+    categoryButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        activeCategory = button.dataset.category;
+
+        categoryButtons.forEach((item) => {
+          const isSelected = item === button;
+          item.classList.toggle("selected", isSelected);
+          item.setAttribute("aria-pressed", String(isSelected));
+        });
+
+        categoryMessage.textContent =
+          `دسته ${categoryNames[activeCategory]} انتخاب شد؛ محصولات مرتبط در پایین نمایش داده می‌شوند.`;
+        categoryMessage.classList.add("show");
+        updateProducts();
+
+        document.getElementById("products").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    addToCartButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const id = button.dataset.productId;
+        cart[id] = (cart[id] || 0) + 1;
+        renderCart();
+        showToast(`${button.dataset.product} به سبد خرید اضافه شد!`);
+      });
+    });
+
+    cartList.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-action]");
+      if (!button) return;
+
+      const id = button.dataset.id;
+      const action = button.dataset.action;
+      if (!cart[id]) return;
+
+      if (action === "increase") {
+        cart[id] += 1;
+      } else if (action === "decrease") {
+        cart[id] -= 1;
+        if (cart[id] <= 0) delete cart[id];
+      } else if (action === "remove") {
+        delete cart[id];
+        showToast("محصول از سبد خرید حذف شد.");
+      }
+
+      renderCart();
+    });
+
+    clearCartButton.addEventListener("click", () => {
+      if (!Object.keys(cart).length) return;
+      cart = {};
+      renderCart();
+      showToast("سبد خرید خالی شد.");
+    });
+
+    document.getElementById("searchForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      document.getElementById("products").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    searchInput.addEventListener("input", updateProducts);
+
+    document.querySelector(".brand").addEventListener("click", (event) => {
+      if (!productDetailSection.hidden) {
+        event.preventDefault();
+        closeProductDetail();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+
+    document.getElementById("accountLink").addEventListener("click", (event) => {
+      event.preventDefault();
+      showToast("بخش ورود و ثبت‌نام را در مرحله‌های بعد می‌سازیم.");
+    });
+
+    document.querySelectorAll(".main-nav a[href^='#']").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        if (productDetailSection.hidden) return;
+        event.preventDefault();
+        const target = document.querySelector(link.getAttribute("href"));
+        closeProductDetail();
+        if (target) setTimeout(() => target.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+      });
+    });
+
+    document.getElementById("cartLink").addEventListener("click", (event) => {
+      event.preventDefault();
+      if (!productDetailSection.hidden) closeProductDetail();
+      setTimeout(() => document.getElementById("cart").scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+      if (!getCartQuantity()) showToast("سبد خریدت هنوز خالی است.");
+    });
+
+    loadCart();
+    updateProducts();
+    renderCart();
+  </script>
+</body>
+</html>
